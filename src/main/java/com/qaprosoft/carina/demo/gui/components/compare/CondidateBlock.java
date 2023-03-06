@@ -26,25 +26,25 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 
 public class CondidateBlock extends AbstractUIObject {
-    @FindBy(xpath = ".//input[contains(@id, 'sSearch')]")
-    private ExtendedWebElement inputField;
+	@FindBy(xpath = ".//input[contains(@id, 'sSearch')]")
+	private ExtendedWebElement inputField;
 
-    @FindBy(xpath = "./div[contains(@class, 'autocomplete-search')]//a[not(@class)]")
-    private List<ExtendedWebElement> autocompleteSearchElements;
+	@FindBy(xpath = "./div[contains(@class, 'autocomplete-search')]//a[not(@class)]")
+	private List<ExtendedWebElement> autocompleteSearchElements;
 
-    public CondidateBlock(WebDriver driver, SearchContext searchContext) {
-        super(driver, searchContext);
-    }
+	public CondidateBlock(WebDriver driver, SearchContext searchContext) {
+		super(driver, searchContext);
+	}
 
-    public void sendKeysToInputField(String text) {
-        inputField.click();
-        inputField.type(text);
-    }
+	public void sendKeysToInputField(String text) {
+		inputField.click();
+		inputField.type(text);
+	}
 
-    public void getFirstPhone() {
+	public void getFirstPhone() {
 		pause(1);
 		Assert.assertTrue(autocompleteSearchElements.size() > 0, "No phones found!");
 		autocompleteSearchElements.get(0).assertElementPresent();
-        autocompleteSearchElements.get(0).click();
-    }
+		autocompleteSearchElements.get(0).click();
+	}
 }
